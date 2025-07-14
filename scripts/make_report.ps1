@@ -1,21 +1,21 @@
-Write-Host ">>> Análisis de grafo..."
+Write-Host "analisis del grafo:"
 py src/graph_analysis.py --output metrics.json
 
-Write-Host ">>> Generando reporte..."
+Write-Host "generando reporte:"
 py src/report_suite.py --input metrics.json --output report.md --format md
 
-Write-Host ">>> Previsualizando reporte..."
+Write-Host "viendo el reporte:"
 if (Test-Path report.md) {
     $lineCount = (Get-Content report.md).Count
     if ($lineCount -ge 50) {
-        Write-Host " Reporte OK. Líneas: $lineCount"
-        notepad report.md  # o cámbialo por 'more report.md' si no quieres abrir notepad
+        Write-Host " reporte OK. lineas: $lineCount"
+        notepad report.md  
         exit 0
     } else {
-        Write-Host " Reporte incompleto. Solo $lineCount líneas"
+        Write-Host " reporte incompleto. solo $lineCount lineas"
         exit 1
     }
 } else {
-    Write-Host " No se encontró report.md"
+    Write-Host " no se encontro report.md"
     exit 1
 }

@@ -21,6 +21,14 @@ def test_commit_stats(metrics_file):
     os.getenv("GIT_LARGE_REPO") == "true",
     reason="Slow on large repos"
 )
+
+@pytest.fixture
+def metrics_file(tmp_path):
+    data = {"n_nodes":1,"n_edges":0,"density":0,"entropy":0,"critical_merges":[]}
+    path = tmp_path / "metrics.json"
+    path.write_text(json.dumps(data))
+    return str(path)
+
 def test_release_notes(monkeypatch):
     #mock subprocess
     import subprocess
