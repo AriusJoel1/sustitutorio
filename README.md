@@ -22,6 +22,10 @@ py src/graph_analysis.py --output metrics.json
 
 ## Make Report (make all) 
 '''
+#bash
+chmod +x scripts/make_report.sh
+./scripts/make_report.sh
+#powershell
 powershell -ExecutionPolicy Bypass -File scripts\make_report.ps1
 '''
 
